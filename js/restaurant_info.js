@@ -38,7 +38,7 @@ initMap = () => {
         id: 'mapbox.streets'    
       }).addTo(newMap);
       fillBreadcrumb();
-      //DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
+      DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
     }
   });
 }  
@@ -224,6 +224,7 @@ createReviewHTML = (review) => {
 
   const date = document.createElement('p');
   date.setAttribute("id", "date");
+  //date.setAttribute("aria-label","date");
   let dateObject = new Date(review.createdAt);
   date.innerHTML =`${dateObject.toDateString()}`;
   div.appendChild(date);
@@ -231,13 +232,15 @@ createReviewHTML = (review) => {
 
   const rating = document.createElement('p');
   rating.setAttribute("id", "rating");
-  rating.setAttribute("tabindex", "1");
+  rating.setAttribute("tabindex", "0");
+  //rating.setAttribute("aria-label","rating");
   rating.innerHTML = `Rating: ${review.rating}`;
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.setAttribute("id", "comments");
-  comments.setAttribute("tabindex", "1");
+  comments.setAttribute("tabindex", "0");
+  //comments.setAttribute("aria-label","comments");
   comments.innerHTML = review.comments;
   li.appendChild(comments);
 
@@ -301,7 +304,7 @@ getParameterByName = (name, url) => {
 
     if (!navigator.onLine){
       const offlineReviews = DBHelper.setLocalStorage(JSON.stringify(reviewData));
-      console.log("offline reviews saved", reviewData);
+      console.log("offline review saved", reviewData);
 
 
     }else {
@@ -319,6 +322,9 @@ getParameterByName = (name, url) => {
     const titleReviews = document.getElementById('reviewsTitle');
     container.insertBefore(ulNewNode, titleReviews.nextSibling);
     document.forms["review-form"].reset(); 
+    console.log('load window');
+    window.location.reload();
+    
     
     
  } 

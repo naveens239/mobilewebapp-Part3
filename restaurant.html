@@ -57,13 +57,13 @@
 
           <div class="name-text">
             <label class="name-label" for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" required/>
+            <input type="text" id="name" name="name" aria-label= "name" placeholder="Your Name" required/>
           </div>
 
           <!-- <div class="review-body"> -->
             <div class="review-rating">
               <label class="rating-label" for="rating">Rating:</label>
-              <select id="rating" name="rating">
+              <select id="rating" name="rating" aria-label= "rating">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -74,7 +74,7 @@
 
             <div class="comments-text">
               <label class="comment-label" for="review-text">Comments:</label>
-              <textarea class="comment-text" id="comment-text" rows="4" name="comments" placeholder="Let us know your experience" required></textarea><br><br>
+              <textarea class="comment-text" id="comment-text" rows="4" name="comments" aria-label="comments" placeholder="Let us know your experience" required></textarea><br><br>
               <button class = "btn-submit" onclick="postReview()"> Submit Review</button>
               <!-- <input class="btn-submit" type="submit" value="Submit Review" onclick="postReview()"> -->
             </div>
