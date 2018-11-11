@@ -215,7 +215,7 @@ createRestaurantHTML = (restaurant) => {
 
 
 /**
- * Change favorite class
+ * Change favorite class 
  */
 
 changeFavElementClass = (el, fav) => {
