@@ -78,11 +78,16 @@ class DBHelper {
  *  offline storage.
   *
  */
+  //var offlineComments=[];
   static setLocalStorage(offlineData) {
+    console.log('inside set local storage', offlineData);
+    console.log('local storage is', localStorage);
+    ///offlineComments.push(offlineData);
+    //console.log('offline comments are',offlineComments);
     const offlineReviews = localStorage.setItem('offlineData', offlineData);
-     console.log("offline reviews saved", offlineReviews);
+    console.log('local storage is', localStorage);
+    console.log("offline reviews saved", offlineReviews);
     return offlineReviews;
-    
   }
 
   static getLocalStorage() {
@@ -218,9 +223,7 @@ class DBHelper {
    * Fetch a review by its ID from Server.
    * Store reviews in indexdDB.
    */
-  static fetchReviewsById(id){
-    //this.updateOnlineStatus();
-    
+  static fetchReviewsById(id){    
     const option = {
       credentials: 'include'
       };
@@ -314,10 +317,12 @@ class DBHelper {
         console.log('LocalState: data sent to api: ');
       } 
       */
+      console.log('inside updateonline status - length of store is',localStorage.length);
       if (localStorage.length) {
         this.addReviews(offlineData);
         console.log('LocalState: data sent to api: ', offlineData);
         localStorage.clear();
+        //offlineComments=[];
       } 
      
   }
@@ -330,10 +335,10 @@ class DBHelper {
        //const  offlineReviews = JSON.parse(this.getOfflinePost());
        
        //const  offlineReviews = JSON.stringify(this.setLocalStorage(offlineData);
-       let postOnlineStatus = this.updateOnlineStatus();
-      const offlineReviews = JSON.stringify(this.setLocalStorage(offlineData));
+    let postOnlineStatus = this.updateOnlineStatus();
+    const offlineReviews = JSON.stringify(this.setLocalStorage(offlineData));
 
-
+    console.log('inside post offline data................');
     console.log('offline data: ',offlineData);
     window.addEventListener('online',  postOnlineStatus);
    // window.addEventListener('offline', updateOnlineStatus);

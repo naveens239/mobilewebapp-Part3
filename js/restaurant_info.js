@@ -64,10 +64,11 @@ initMap = () => {
     When it is the updateOnlineStatus method send an offline reviews to the server.
  */
 window.addEventListener('load', () => {
-
   updateOnlineStatus = (event) => {
-    DBHelper.updateOnlineStatus();
-  }
+    //postReview();
+    
+    DBHelper.updateOnlineStatus();}
+ 
 
   window.addEventListener('online',  updateOnlineStatus);
   //location.reload();
@@ -303,8 +304,11 @@ getParameterByName = (name, url) => {
     const ul = document.getElementById('reviews-list');
 
     if (!navigator.onLine){
+      console.log('----------the net is offline----------');
+      console.log(reviewData);
       const offlineReviews = DBHelper.setLocalStorage(JSON.stringify(reviewData));
       console.log("offline review saved", reviewData);
+      //DBHelper.postOfflineReviews(reviewData);
 
 
     }else {
@@ -322,8 +326,8 @@ getParameterByName = (name, url) => {
     const titleReviews = document.getElementById('reviewsTitle');
     container.insertBefore(ulNewNode, titleReviews.nextSibling);
     document.forms["review-form"].reset(); 
-    console.log('load window');
-    window.location.reload();
+    //console.log('load window');
+    //window.location.reload();
     
     
     
